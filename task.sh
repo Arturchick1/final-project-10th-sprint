@@ -6,8 +6,8 @@
 #   dir2
 #   dir3
 #       dir4
-mkdir task && mkdir task/dir1 task/dir2 task/dir3 && mkdir task/dir3/dir4
-# изменяем текущую директорию на task
+mkdir -p task/dir1 task/dir2 task/dir3/dir4
+#изменяем текущую директорию на task
 cd task
 # создаём пустой файл task/dir2/empty
 touch dir2/empty
@@ -17,7 +17,7 @@ touch dir2/empty
 echo '#!/bin/bash
 echo "$1 $2, привет!"' > dir2/hello.sh
 # устанавливаем для task/dir2/hello.sh права rwxrw-r--
-chmod 765 dir2/hello.sh
+chmod 764 dir2/hello.sh
 # сохраняем список файлов task/dir2 в task/dir2/list.txt
 ls dir2 > dir2/list.txt
 # копируем содержимое каталога task/dir2 в каталог task/dir3/dir4
@@ -38,7 +38,7 @@ mv dir1/summary.txt 'Практическое задание'
 cat 'Практическое задание'
 # ищем в файле "Практическое задание" строки, которые содержат слово "dir"
 # и затем отсортировываем их
-dpkg -l | grep "dir" 'Практическое задание' 
+grep "dir" 'Практическое задание' 
 # меняем текущую директорию на родительскую для task
 cd ..
 # удаляем директорию task со всем содержимым
